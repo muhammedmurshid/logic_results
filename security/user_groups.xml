@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record model="ir.module.category" id="module_students_results">
+        <field name="name">Students Result</field>
+        <field name="sequence">21</field>
+        <field name="visible" eval="0"/>
+    </record>
+    <record id="students_result_digital" model="res.groups">
+        <field name="name">Digital</field>
+        <field name="category_id" ref="module_students_results"/>
+    </record>
+</odoo>

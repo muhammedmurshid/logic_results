@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="logic_results_view" model="ir.ui.view">
+        <field name="name">Results</field>
+        <field name="model">logic.exam.results</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="One to One Meeting">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone_number"/>
+                            <field name="batch_id"/>
+                            <field name="campus_name"/>
+                            <field name="class_teacher_id"/>
+                            <field name="group"/>
+                            <field name="mode_of_study"/>
+                            <field name="qualification_status"/>
+                        </group>
+                        <group>
+                            <field name="updated_photo"/>
+                            <field name="result_screenshot"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="results_list_view" model="ir.ui.view">
+        <field name="name">Results</field>
+        <field name="model">logic.exam.results</field>
+        <field name="arch" type="xml">
+            <tree>
+                 <field name="name"/>
+                            <field name="phone_number"/>
+                            <field name="batch_id"/>
+                            <field name="campus_name"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="results_action">
+        <field name="name">Results</field>
+        <field name="res_model">logic.exam.results</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Results"
+              id="results_main_menu"
+              web_icon="logic_results/static/description/icon.png"
+              sequence="10"/>
+
+    <menuitem name="Results" id="menu_for_results"
+              action="results_action"
+              parent="results_main_menu"
+              sequence="1"/>
+
+
+</odoo>

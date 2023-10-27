@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="rules_for_results_coordinator" model="ir.rule">
+        <field name="name">Own Students Results</field>
+        <field ref="model_logic_exam_results" name="model_id"/>
+        <field name="domain_force">[('class_teacher_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('logic_base.coordinator_logic_base'))]"/>
+    </record>
+
+    <record id="rules_for_results_academic_head" model="ir.rule">
+        <field name="name">Own Coordinators Students Results</field>
+        <field ref="model_logic_exam_results" name="model_id"/>
+        <field name="domain_force">[('class_teacher_id.employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('logic_base.academic_head_logic_base'))]"/>
+    </record>
+</odoo>

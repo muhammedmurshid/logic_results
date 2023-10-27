@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="result_link_batch" model="ir.ui.view">
+        <field name="name">Results</field>
+        <field name="model">result.link.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Result Link">
+                <script type="text/javascript">
+                    function copyResultLink()
+                    {
+                        var field_value = document.getElementsByName('link');
+                        console.log(field_value[0].value)
+                        if (field_value.length)
+                        {
+                        navigator.clipboard.writeText(field_value[0].value)
+                        }
+                    }
+                </script>
+                <group>
+                    <label for="batch_id"/>
+                    <div class="o_row">
+                        <field name="batch_id" required="1"/>
+                        <field name="link"/>
+                        <field name="company_id" invisible="1"/>
+                        <button name="action_copy_link" string="Copy Link" type="object" class="oe_highlight" onclick="copyResultLink()"/>
+                    </div>
+
+                </group>
+                <footer>
+                    <!--                    <button string="Create Payment" class="oe_highlight" type="object" name='done'/>-->
+                    <button string="Discard" type="object" special='cancel'/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_for_result_link" model="ir.actions.act_window">
+        <field name="name">Results Link</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">result.link.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="result_link_batch"/>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="menu_for_copy_result_link" sequence="10" name="Copy Link" action="wizard_for_result_link"
+              parent="results_main_menu" groups="logic_base.coordinator_logic_base"/>
+</odoo>
