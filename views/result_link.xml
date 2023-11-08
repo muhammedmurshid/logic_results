@@ -43,5 +43,5 @@
         <field name="target">new</field>
     </record>
     <menuitem id="menu_for_copy_result_link" sequence="10" name="Copy Link" action="wizard_for_result_link"
-              parent="results_main_menu" groups="logic_base.coordinator_logic_base"/>
+              parent="results_main_menu"/>
 </odoo>
