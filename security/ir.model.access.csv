@@ -1,9 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_for_results,access_details,model_logic_exam_results,logic_base.coordinator_logic_base,1,0,0,0
+access_for_results,access_details,model_logic_exam_results,logic_base.coordinator_logic_base,1,0,0,1
 access_link,access_details,model_result_link_wizard,logic_base.coordinator_logic_base,1,1,1,1
 
-access_for_administrator,access_details,model_logic_exam_results,logic_base.admin_logic_base,1,0,0,0
+access_for_administrator,access_details,model_logic_exam_results,logic_base.admin_logic_base,1,0,0,1
 access_link_administrator,access_details,model_result_link_wizard,logic_base.admin_logic_base,1,0,0,0
 
 access_for_academic_head,access_details,model_logic_exam_results,logic_base.academic_head_logic_base,1,0,0,0
