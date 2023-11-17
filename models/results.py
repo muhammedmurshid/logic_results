@@ -6,7 +6,7 @@ class ExamResults(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Exam Result'
 
-    name = fields.Char(string='Name')
+    name = fields.Many2one('logic.students', string='Student Name')
     updated_photo = fields.Binary(string='Updated Photo')
     phone_number = fields.Char(string='Phone Number')
     batch_id = fields.Many2one('logic.base.batch', string='Batch')

@@ -15,15 +15,19 @@ class WebsiteForm(http.Controller):
         print(user_id, 'user')
         batch_name = request.env['logic.base.batch'].sudo().search([('id', '=', batch_id)])
         current_user = request.env['res.users'].sudo().search([('id', '=', int(user_id))])
+        student = request.env['logic.students'].sudo().search(
+            [('batch_id.id', '=', batch_id), ('current_status', '=', True)])
+        print(student, 'student')
         #
-        print(batch_name.name, 'batch', current_user.id, 'c_user')
+        print(batch_id, 'batch', current_user.id, 'c_user')
         # current_user = request.env['res.users'].sudo().browse(user)
 
         values = {
             'batch_id': batch_id,
             'batch_name': batch_name.name,
             'user': current_user.name,
-            'u_id': current_user.id
+            'u_id': current_user.id,
+            'students': student
 
         }
         return request.render("logic_results.logic_exams_result_template", values)
@@ -34,7 +38,7 @@ class WebsiteForm(http.Controller):
         updated_image = base64.b64encode(kw.get('student_photo').read())
         result_sc = base64.b64encode(kw.get('result_screenshot').read())
         request.env['logic.exam.results'].sudo().create({
-            'name': kw.get('student_name'),
+            'name': kw.get('student_id'),
             'phone_number': kw.get('phone'),
             'batch_id': kw.get('batch_id'),
             'campus_name': kw.get('campus_name'),

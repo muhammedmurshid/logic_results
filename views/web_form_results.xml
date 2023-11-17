@@ -7,8 +7,12 @@
                     <div class="container">
                         <form action="/exam_results/submit/" method="post" enctype="multipart/form-data"
                               class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/><br/>
-                            <div align="center"><h2>Result Form</h2></div><br/>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <br/>
+                            <div align="center">
+                                <h2>Result Form</h2>
+                            </div>
+                            <br/>
                             <div class="s_website_form_rows row s_col_no_bgcolor">
                                 <div class="form-group col-12 s_website_form_field s_website_form_required">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
@@ -18,9 +22,14 @@
                                             <span class="s_website_form_mark">*</span>
                                         </label>
                                         <div class="col-sm">
-                                            <input type="text"
-                                                   class="form-control s_website_form_input" name="student_name"
-                                                   required=""/>
+                                            <select name="student_id" t-attf-class="form-control s_website_form_input"
+                                                    required="1">
+                                                <t t-foreach="students or []" t-as="student">
+                                                    <option t-att-value="student.id">
+                                                        <t t-esc="student.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -33,12 +42,14 @@
                                             <span class="s_website_form_mark">*</span>
                                         </label>
                                         <div class="col-sm">
-                                            <input type="file" name="student_photo" class="file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" accept="image/*"/>
+                                            <input type="file" name="student_photo" class="file" multiple="true"
+                                                   data-show-upload="true" data-show-caption="true" lass="file"
+                                                   data-show-preview="true" accept="image/*"/>
                                         </div>
                                     </div>
                                 </div>
 
-                                 <div class="form-group col-12 s_website_form_field s_website_form_required">
+                                <div class="form-group col-12 s_website_form_field s_website_form_required">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
                                                style="width: 200px">
@@ -64,7 +75,7 @@
                                             <input type="text"
                                                    class="form-control s_website_form_input" name="batch_name"
                                                    required=""
-                                                   t-att-value="batch_name"  readonly="1"/>
+                                                   t-att-value="batch_name" readonly="1"/>
                                             <input type="text"
                                                    class="form-control s_website_form_input" name="batch_id"
                                                    required=""
@@ -102,7 +113,7 @@
                                                    class="form-control s_website_form_input" name="class_teacher"
                                                    t-att-value="user" readonly="1"
                                                    required=""/>
-                                             <input type="text"
+                                            <input type="text"
                                                    class="form-control s_website_form_input" name="class_teacher_name"
                                                    required=""
                                                    t-att-value="u_id" readonly="1" style="display:none"/>
@@ -110,10 +121,11 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                                style="width: 200px">
+                                               style="width: 200px">
                                             <span class="s_website_form_label_content">Group</span>
                                         </label>
                                         <div class="col-sm">
@@ -129,10 +141,11 @@
                                 </div>
 
 
-                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                                style="width: 200px">
+                                               style="width: 200px">
                                             <span class="s_website_form_label_content">Mode of Study</span>
                                         </label>
                                         <div class="col-sm">
@@ -149,7 +162,7 @@
                                 <div class="form-group col-12 s_website_form_field" data-type="char" data-name="Field">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                                style="width: 200px">
+                                               style="width: 200px">
                                             <span class="s_website_form_label_content">Attempted Part</span>
                                         </label>
                                         <div class="col-sm">
@@ -167,7 +180,7 @@
                                 <div class="form-group col-12 s_website_form_field" data-type="char" data-name="Field">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                                style="width: 200px">
+                                               style="width: 200px">
                                             <span class="s_website_form_label_content">Qualification Status</span>
                                         </label>
                                         <div class="col-sm">
@@ -175,7 +188,8 @@
                                                     class="form-control link-style">
                                                 <option value="semi_qualified" t-esc="'Semi Qualified'"/>
                                                 <option value="full_qualified" t-esc="'Fully Qualified'"/>
-                                                <option value="both_qualified" t-esc="'Both Qualified in Single Window'"/>
+                                                <option value="both_qualified"
+                                                        t-esc="'Both Qualified in Single Window'"/>
 
                                             </select>
                                         </div>
@@ -190,7 +204,9 @@
                                             <span class="s_website_form_mark">*</span>
                                         </label>
                                         <div class="col-sm">
-                                            <input type="file" name="result_screenshot" class="file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" accept="image/*"/>
+                                            <input type="file" name="result_screenshot" class="file" multiple="true"
+                                                   data-show-upload="true" data-show-caption="true" lass="file"
+                                                   data-show-preview="true" accept="image/*"/>
                                         </div>
                                     </div>
                                 </div>
