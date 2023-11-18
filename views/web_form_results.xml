@@ -187,8 +187,8 @@
                                             <select name="qualification_status" id="qualification_status"
                                                     class="form-control link-style">
                                                 <option value="semi_qualified" t-esc="'Semi Qualified'"/>
-                                                <option value="full_qualified" t-esc="'Fully Qualified'"/>
-                                                <option value="both_qualified"
+                                                <option value="fully_qualified" t-esc="'Fully Qualified'"/>
+                                                <option value="both_qualified_in_single_window"
                                                         t-esc="'Both Qualified in Single Window'"/>
 
                                             </select>

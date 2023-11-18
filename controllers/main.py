@@ -37,6 +37,13 @@ class WebsiteForm(http.Controller):
         print(kw, 'poo')
         updated_image = base64.b64encode(kw.get('student_photo').read())
         result_sc = base64.b64encode(kw.get('result_screenshot').read())
+        student = request.env['logic.students'].sudo().search(
+            [('batch_id.id', '=', kw.get('batch_id'))]
+        )
+        student.write({
+            'result_sc': result_sc,
+            'qualification_status': kw.get('qualification_status'),
+        })
         request.env['logic.exam.results'].sudo().create({
             'name': kw.get('student_id'),
             'phone_number': kw.get('phone'),

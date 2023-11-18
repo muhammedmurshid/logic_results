@@ -7,6 +7,8 @@
         <field name="arch" type="xml">
             <form string="One to One Meeting">
                 <sheet>
+<!--                    <field name="updated_photo" widget='image' style="width:100px;" class="oe_avatar"-->
+<!--                           />-->
                     <group>
                         <group>
                             <field name="name"/>
